@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="IpButton" Content="My IP: Detecting" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Width="160" Height="40"/>
     </Grid>
 </Window>
