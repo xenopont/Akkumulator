@@ -57,6 +57,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MainWindow\Ip.cs" />
+    <Compile Include="MainWindow\Tray.cs" />
     <Compile Include="Util\General.cs" />
     <Compile Include="Util\Ip.cs" />
     <Page Include="MainWindow.xaml">

@@ -8,8 +8,7 @@
         Title="MainWindow" Height="332" Width="359" ResizeMode="CanMinimize">
     <Window.Resources>
         <ContextMenu x:Key="TrayMenu">
-            <MenuItem Header="Hide" Click="ShowHideMainWindow" />
-            <MenuItem Header="Item2" />
+            <MenuItem Header="Hide" Click="ShowHideMainWindow" FontWeight="Bold" />
             <Separator />
             <MenuItem Header="Exit" Click="MenuExitClick" />
         </ContextMenu>
