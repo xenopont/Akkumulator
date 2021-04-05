@@ -63,6 +63,16 @@ namespace Akkumulator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+        internal static System.Drawing.Icon MainIcon {
+            get {
+                object obj = ResourceManager.GetObject("MainIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
         internal static System.Drawing.Icon tray_icon_black {
             get {
                 object obj = ResourceManager.GetObject("tray_icon_black", resourceCulture);

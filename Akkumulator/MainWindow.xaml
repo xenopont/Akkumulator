@@ -9,6 +9,7 @@
     <Window.Resources>
         <ContextMenu x:Key="TrayMenu">
             <MenuItem Header="Hide" Click="ShowHideMainWindow" FontWeight="Bold" />
+            <MenuItem Header="Detecting IP" x:Name="TrayMenuIpItem" IsEnabled="False" />
             <Separator />
             <MenuItem Header="Exit" Click="MenuExitClick" />
         </ContextMenu>

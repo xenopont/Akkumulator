@@ -16,17 +16,6 @@ namespace Akkumulator
             public string TrayIconText { get; set; } = "Application";
         }
 
-        /*
-         * Replace required settings here
-         *
-         */
-        private readonly TrayWindowSettings traySettings = new TrayWindowSettings
-        {
-            TrayIcon = Properties.Resources.tray_icon_white,
-            TrayMenuResourceKey = "TrayMenu",
-            TrayIconText = "Akkumulator",
-        };
-
         private WindowState fCurrentWindowState = WindowState.Normal;
         public WindowState CurrentWindowState
         {
@@ -34,9 +23,8 @@ namespace Akkumulator
             set { fCurrentWindowState = value; }
         }
 
-        protected override void OnSourceInitialized(EventArgs e)
+        private void TrayPartInit()
         {
-            base.OnSourceInitialized(e);
             CreateTrayIcon();
             WindowState = WindowState.Minimized;
         }

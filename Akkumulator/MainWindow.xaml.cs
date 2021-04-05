@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace Akkumulator
 {
@@ -10,8 +11,20 @@ namespace Akkumulator
         public MainWindow()
         {
             InitializeComponent();
-            Util.Ip.AddListener(IpButtonListener);
-            Util.Ip.Start();
+        }
+
+        private readonly TrayWindowSettings traySettings = new TrayWindowSettings
+        {
+            TrayIcon = Properties.Resources.tray_icon_white,
+            TrayMenuResourceKey = "TrayMenu",
+            TrayIconText = "Akkumulator",
+        };
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            TrayPartInit();
+            IpPartInit();
         }
     }
 }
