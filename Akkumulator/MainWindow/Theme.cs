@@ -8,22 +8,27 @@ namespace Akkumulator
         private readonly Icon TrayIconWhite = Properties.Resources.tray_icon_white;
         private readonly Icon TrayIconBlack = Properties.Resources.tray_icon_black;
 
-        private void SetWhiteTrayIcon()
+        private void UpdateTrayIconColor()
         {
-            TrayIcon.Icon = TrayIconWhite;
+            if (TrayIcon == null)
+            {
+                return;
+            }
+            TrayIcon.Icon = Util.Theme.SystemUsesLightTheme() ? TrayIconBlack : TrayIconWhite;
         }
 
-        private void SetBlackTrayIcon()
+        private void UserPreferencesChangedHandler(object sender, Microsoft.Win32.UserPreferenceChangedEventArgs e)
         {
-            TrayIcon.Icon = TrayIconBlack;
+            if (e.Category == Microsoft.Win32.UserPreferenceCategory.General)
+            {
+                UpdateTrayIconColor();
+            }
         }
 
         private void ThemePartInit()
         {
-            if (TrayIcon != null && Util.Theme.SystemUsesLightTheme())
-            {
-                SetBlackTrayIcon();
-            }
+            UpdateTrayIconColor();
+            Microsoft.Win32.SystemEvents.UserPreferenceChanged += UserPreferencesChangedHandler;
         }
     }
 }
