@@ -23,26 +23,26 @@ namespace Akkumulator
             set { fCurrentWindowState = value; }
         }
 
-        private void TrayPartInit()
+        private void TrayPartInit(TrayWindowSettings settings)
         {
-            CreateTrayIcon();
-            WindowState = WindowState.Minimized;
+            CreateTrayIcon(settings);
+            WindowState = settings.InititalWindowState;
         }
 
         private NotifyIcon TrayIcon = null;
         private ContextMenu TrayMenu = null;
 
-        private bool CreateTrayIcon()
+        private bool CreateTrayIcon(TrayWindowSettings settings)
         {
             bool result = false;
             if (TrayIcon == null)
             {
                 TrayIcon = new NotifyIcon
                 {
-                    Icon = traySettings.TrayIcon,
-                    Text = traySettings.TrayIconText,
+                    Icon = settings.TrayIcon,
+                    Text = settings.TrayIconText,
                 };
-                TrayMenu = Resources[traySettings.TrayMenuResourceKey] as ContextMenu;
+                TrayMenu = Resources[settings.TrayMenuResourceKey] as ContextMenu;
 
                 TrayIcon.Click += delegate (object sender, EventArgs e) {
                     if ((e as System.Windows.Forms.MouseEventArgs).Button == System.Windows.Forms.MouseButtons.Left)

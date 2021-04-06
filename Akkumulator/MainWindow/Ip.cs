@@ -27,11 +27,11 @@ namespace Akkumulator
         }
 
         private MenuItem TrayMenuIpItem = null;
-        private void IpPartInit()
+        private void IpPartInit(string trayMenuResourceKey)
         {
             Util.Ip.AddListener(IpListener);
 
-            TrayMenuIpItem = FindItemByName(Resources[traySettings.TrayMenuResourceKey] as ContextMenu, TRAY_MENU_IP_ITEM_X_NAME);
+            TrayMenuIpItem = FindMenuItemByName(Resources[trayMenuResourceKey] as ContextMenu, TRAY_MENU_IP_ITEM_X_NAME);
             if (TrayMenuIpItem != null)
             {
                 TrayMenuIpItem.Click += IpButton_Click;
@@ -49,7 +49,7 @@ namespace Akkumulator
             }
         }
 
-        private MenuItem FindItemByName(ContextMenu menu, string xName)
+        private MenuItem FindMenuItemByName(ContextMenu menu, string xName)
         {
             foreach (object item in menu.Items)
             {

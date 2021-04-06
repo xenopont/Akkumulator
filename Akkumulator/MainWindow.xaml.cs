@@ -13,18 +13,18 @@ namespace Akkumulator
             InitializeComponent();
         }
 
-        private readonly TrayWindowSettings traySettings = new TrayWindowSettings
-        {
-            TrayIcon = Properties.Resources.tray_icon_white,
-            TrayMenuResourceKey = "TrayMenu",
-            TrayIconText = "Akkumulator",
-        };
-
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
-            TrayPartInit();
-            IpPartInit();
+            string trayMenuResourceKey = "TrayMenu";
+            TrayPartInit(new TrayWindowSettings
+            {
+                TrayIcon = TrayIconWhite,
+                TrayMenuResourceKey = trayMenuResourceKey,
+                TrayIconText = "Akkumulator",
+            });
+            IpPartInit(trayMenuResourceKey);
+            ThemePartInit();
         }
     }
 }
