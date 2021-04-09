@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="332" Width="359" ResizeMode="CanMinimize">
     <Window.Resources>
-        <ContextMenu x:Key="TrayMenu">
+        <ContextMenu x:Key="TrayMenu" Style="{StaticResource TrayMenuStyleDark}">
             <MenuItem Header="Hide" Click="ShowHideMainWindow" FontWeight="Bold" />
             <MenuItem Header="Detecting IP" x:Name="TrayMenuIpItem" IsEnabled="False" />
             <Separator />

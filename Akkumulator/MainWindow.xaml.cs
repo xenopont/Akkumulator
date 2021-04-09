@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Text;
 using System.Windows;
+using System.Windows.Markup;
 
 namespace Akkumulator
 {
@@ -22,6 +26,7 @@ namespace Akkumulator
                 TrayIcon = TrayIconWhite,
                 TrayMenuResourceKey = trayMenuResourceKey,
                 TrayIconText = "Akkumulator",
+                InititalWindowState = WindowState.Normal,
             });
             IpPartInit(trayMenuResourceKey);
             ThemePartInit();
