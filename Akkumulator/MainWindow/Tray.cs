@@ -10,7 +10,7 @@ namespace Akkumulator
     {
         private class TrayWindowSettings
         {
-            public WindowState InititalWindowState { get; set; } = WindowState.Minimized;
+            public WindowState InitialWindowState { get; set; } = WindowState.Minimized;
             public System.Drawing.Icon TrayIcon { get; set; }
             public string TrayMenuResourceKey { get; set; } // can't access ContextMenu directly
             public string TrayIconText { get; set; } = "Application";
@@ -26,7 +26,7 @@ namespace Akkumulator
         private void TrayPartInit(TrayWindowSettings settings)
         {
             CreateTrayIcon(settings);
-            WindowState = settings.InititalWindowState;
+            WindowState = settings.InitialWindowState;
         }
 
         private NotifyIcon TrayIcon = null;

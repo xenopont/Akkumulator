@@ -26,7 +26,7 @@ namespace Akkumulator
                 TrayIcon = TrayIconWhite,
                 TrayMenuResourceKey = trayMenuResourceKey,
                 TrayIconText = "Akkumulator",
-                InititalWindowState = WindowState.Normal,
+                InitialWindowState = WindowState.Normal,
             });
             IpPartInit(trayMenuResourceKey);
             ThemePartInit();
