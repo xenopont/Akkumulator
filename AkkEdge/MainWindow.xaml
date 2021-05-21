@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Akkumulator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="332" Width="359" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <ContextMenu x:Key="TrayMenu" Style="{StaticResource TrayMenuStyleDark}">
+            <MenuItem Header="Hide" Click="ShowHideMainWindow" FontWeight="Bold" />
+            <MenuItem Header="Detecting IP" x:Name="TrayMenuIpItem" IsEnabled="False" />
+            <Separator />
+            <MenuItem Header="Exit" Click="MenuExitClick" />
+        </ContextMenu>
+    </Window.Resources>
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="IpButton" Content="My IP: Detecting" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Width="160" Height="40" Click="IpButton_Click"/>
     </Grid>
 </Window>
