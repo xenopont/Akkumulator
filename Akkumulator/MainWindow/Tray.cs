@@ -16,12 +16,7 @@ namespace Akkumulator
             public string TrayIconText { get; set; } = "Application";
         }
 
-        private WindowState fCurrentWindowState = WindowState.Normal;
-        public WindowState CurrentWindowState
-        {
-            get { return fCurrentWindowState; }
-            set { fCurrentWindowState = value; }
-        }
+        public WindowState CurrentWindowState { get; set; } = WindowState.Normal;
 
         private void TrayPartInit(TrayWindowSettings settings)
         {
@@ -29,12 +24,11 @@ namespace Akkumulator
             WindowState = settings.InitialWindowState;
         }
 
-        private NotifyIcon TrayIcon = null;
-        private ContextMenu TrayMenu = null;
+        private NotifyIcon TrayIcon;
+        private ContextMenu TrayMenu;
 
-        private bool CreateTrayIcon(TrayWindowSettings settings)
+        private void CreateTrayIcon(TrayWindowSettings settings)
         {
-            bool result = false;
             if (TrayIcon == null)
             {
                 TrayIcon = new NotifyIcon
@@ -52,17 +46,11 @@ namespace Akkumulator
                     else
                     {
                         TrayMenu.IsOpen = true;
-                        Activate(); // must activate Window
+                        _ = Activate(); // must activate Window
                     }
                 };
-                result = true;
-            }
-            else
-            {
-                result = true;
             }
             TrayIcon.Visible = true;
-            return result;
         }
 
         private void ShowHideMainWindow(object sender, RoutedEventArgs e)
@@ -96,12 +84,7 @@ namespace Akkumulator
             }
         }
 
-        private bool fCanClose = false;
-        public bool CanClose
-        {
-            get { return fCanClose; }
-            set { fCanClose = value; }
-        }
+        public bool CanClose { get; set; } = false;
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {

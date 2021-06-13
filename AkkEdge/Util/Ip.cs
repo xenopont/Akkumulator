@@ -6,21 +6,21 @@ namespace Akkumulator.Util
 {
     public delegate void IpChangeHandler(string newIp);
 
-    class Ip
+    internal class Ip
     {
         public const string ERROR_DETECTING_IP = "";
 
         // listeners
-        private static readonly HashSet<IpChangeHandler> listeners = new HashSet<IpChangeHandler>();
+        private static readonly HashSet<IpChangeHandler> listeners = new();
 
         public static void AddListener(IpChangeHandler newListener)
         {
-            listeners.Add(newListener);
+            _ = listeners.Add(newListener);
         }
 
         public static void RemoveListener(IpChangeHandler oldListener)
         {
-            listeners.Remove(oldListener);
+            _ = listeners.Remove(oldListener);
             if (listeners.Count == 0)
             {
                 Stop();
@@ -39,22 +39,17 @@ namespace Akkumulator.Util
             {
                 return;
             }
-            foreach(IpChangeHandler handler in listeners)
+            foreach (IpChangeHandler handler in listeners)
             {
                 handler(ip);
             }
         }
 
-        // current ip
-        private static string _current = "";
-        public static string Current
-        {
-            get => _current;
-        }
+        public static string Current { get; private set; } = "";
 
         // ip api client
-        private static readonly HttpClient client = new HttpClient();
-        
+        private static readonly HttpClient client = new();
+
         private static async Task<string> LoadIpAsync()
         {
             try
@@ -81,7 +76,9 @@ namespace Akkumulator.Util
             }
         }
 
+#pragma warning disable CA1805
         private static bool canRefreshIp = false;
+#pragma warning restore CA1805
 
         private static async Task RefreshIpAsync()
         {
@@ -96,8 +93,8 @@ namespace Akkumulator.Util
                 return;
             }
 
-            _current = newIp;
-            NotifyAllListeners(_current);
+            Current = newIp;
+            NotifyAllListeners(Current);
 
             await Task.Delay(RefreshTimeout);
             _ = RefreshIpAsync();

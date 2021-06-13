@@ -26,7 +26,7 @@ namespace Akkumulator
             TrayMenuIpItem.IsEnabled = !error;
         }
 
-        private MenuItem TrayMenuIpItem = null;
+        private MenuItem TrayMenuIpItem;
         private void IpPartInit(string trayMenuResourceKey)
         {
             Util.Ip.AddListener(IpListener);
@@ -53,7 +53,7 @@ namespace Akkumulator
         {
             foreach (object item in menu.Items)
             {
-                if (!(item is MenuItem))
+                if (item is not MenuItem)
                 {
                     continue;
                 }

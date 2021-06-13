@@ -6,7 +6,7 @@ namespace Akkumulator.Util
 {
     public delegate void IpChangeHandler(string newIp);
 
-    class Ip
+    internal class Ip
     {
         public const string ERROR_DETECTING_IP = "";
 
@@ -15,12 +15,12 @@ namespace Akkumulator.Util
 
         public static void AddListener(IpChangeHandler newListener)
         {
-            listeners.Add(newListener);
+            _ = listeners.Add(newListener);
         }
 
         public static void RemoveListener(IpChangeHandler oldListener)
         {
-            listeners.Remove(oldListener);
+            _ = listeners.Remove(oldListener);
             if (listeners.Count == 0)
             {
                 Stop();
@@ -39,18 +39,13 @@ namespace Akkumulator.Util
             {
                 return;
             }
-            foreach(IpChangeHandler handler in listeners)
+            foreach (IpChangeHandler handler in listeners)
             {
                 handler(ip);
             }
         }
 
-        // current ip
-        private static string _current = "";
-        public static string Current
-        {
-            get => _current;
-        }
+        public static string Current { get; private set; } = "";
 
         // ip api client
         private static readonly HttpClient client = new HttpClient();
@@ -96,8 +91,8 @@ namespace Akkumulator.Util
                 return;
             }
 
-            _current = newIp;
-            NotifyAllListeners(_current);
+            Current = newIp;
+            NotifyAllListeners(Current);
 
             await Task.Delay(RefreshTimeout);
             _ = RefreshIpAsync();

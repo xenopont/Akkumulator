@@ -12,6 +12,9 @@
     <!--PublishTrimmed>true</PublishTrimmed--><!-- trim the framework dependencies (still the size is too big -->
     <PublishReadyToRun>false</PublishReadyToRun><!-- some performance advantage for the bigger apps -->
     <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <Version>1.2.0.1</Version>
+    <AssemblyVersion>1.2.0.1</AssemblyVersion>
+    <FileVersion>1.2.0.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

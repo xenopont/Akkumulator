@@ -34,13 +34,13 @@ namespace Akkumulator
             TrayMenuIpItem = FindMenuItemByName(Resources[trayMenuResourceKey] as ContextMenu, TRAY_MENU_IP_ITEM_X_NAME);
             if (TrayMenuIpItem != null)
             {
-                TrayMenuIpItem.Click += IpButton_Click;
+                TrayMenuIpItem.Click += IpButtonClick;
             }
-            
+
             Util.Ip.Start();
         }
 
-        private void IpButton_Click(object sender, RoutedEventArgs e)
+        private void IpButtonClick(object sender, RoutedEventArgs e)
         {
             Util.General.CopyTextToClipboard(Util.Ip.Current);
             if (sender == IpButton)

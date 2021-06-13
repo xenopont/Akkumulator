@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
 using System.Windows;
-using System.Windows.Markup;
 
 namespace Akkumulator
 {

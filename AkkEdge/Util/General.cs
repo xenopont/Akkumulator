@@ -2,7 +2,7 @@
 
 namespace Akkumulator.Util
 {
-    class General
+    internal class General
     {
         public static void CopyTextToClipboard(string text)
         {
@@ -11,9 +11,9 @@ namespace Akkumulator.Util
 
         public static string ReadRegistryString(string keyName, string valueName, string defaultValue)
         {
-            try 
+            try
             {
-                var v = Microsoft.Win32.Registry.GetValue(keyName, valueName, defaultValue);
+                object v = Microsoft.Win32.Registry.GetValue(keyName, valueName, defaultValue);
                 if (v != null)
                 {
                     return v.ToString();
