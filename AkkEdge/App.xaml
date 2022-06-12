@@ -12,8 +12,11 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type MenuItem}">
-                                <Border Background="Transparent" x:Name="ItemBorder" Padding="24,8" Margin="0">
-                                    <ContentPresenter ContentSource="Header" />
+                                <Border Background="Transparent" x:Name="ItemBorder" Padding="8,8,32,8" Margin="0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <ContentPresenter ContentSource="Icon" Width="16" Height="16" Margin="8,0" />
+                                        <ContentPresenter ContentSource="Header" />
+                                    </StackPanel>
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsHighlighted" Value="True">
