@@ -68,7 +68,7 @@ namespace Akkumulator
                 Show();
                 (TrayMenu.Items[0] as MenuItem).Header = "Hide";
                 WindowState = CurrentWindowState;
-                Activate(); // otherwise it doesn't get focus
+                _ = Activate(); // otherwise it doesn't get focus
             }
         }
 
