@@ -88,13 +88,11 @@ namespace Akkumulator.Util
             }
 
             string newIp = await LoadIpAsync();
-            if (newIp == Current)
+            if (newIp != Current)
             {
-                return;
+                Current = newIp;
+                NotifyAllListeners(Current);
             }
-
-            Current = newIp;
-            NotifyAllListeners(Current);
 
             await Task.Delay(RefreshTimeout);
             _ = RefreshIpAsync();
